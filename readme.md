@@ -1,0 +1,1 @@
+Estudo do portal G1 totalmente em Wordpress.

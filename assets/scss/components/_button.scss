@@ -1,0 +1,27 @@
+/*###################
+######## BTN ########
+#####################*/
+
+.btn {
+
+    &:link,
+    &:visited {
+        background-color: #222;
+    }
+
+    
+    @include border-radius(0);
+    width: 100%;
+    background-color: #222;
+    text-transform: uppercase;
+    padding: 1.5rem 0;
+    font-size: 3rem;
+
+    @include breakpoint(md){
+        font-size: 2rem;
+    }
+
+    &:hover {
+        
+    }
+}

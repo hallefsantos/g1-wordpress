@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap');
+
+
+body {
+    line-height: 1.4;
+    font-weight: normal;
+    font-size: 1.5rem;
+    font-family: 'Open Sans', sans-serif;
+    color: $color-black;
+}
+
+a {
+    text-decoration: none;
+    line-height: 1;
+    &:link,
+    &:visited {
+        transition: all 0.2s;
+    }
+
+    &:hover {
+        text-decoration: none;
+    }
+}

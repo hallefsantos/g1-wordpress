@@ -1,0 +1,122 @@
+/*#####################
+####### Sidebar #######
+#######################*/
+
+.sidebar {
+    border: 1px solid #e6e6e6;
+    box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    background-color: #FFF;
+    @include border-radius(4px);
+
+    &:not(:last-of-type) {
+        margin-bottom: 16px;
+    }
+
+    &__header{
+        &__title{
+            font-size: 15px;
+        }
+    }
+    &__content{
+        border: 1px solid #e6e6e6;
+        border-left: none;
+        border-right: none;
+        padding: 0 24px;
+    }
+
+    &__post {
+        padding: 23px 0;
+        &:not(:last-of-type) {
+            border-bottom: 1px solid #e6e6e6;
+        }
+
+        > div {
+            width: calc(100% - 95px);
+        }
+
+        &__title{
+            padding-right: 10px;
+            font-size: 15px;
+            a:link, a:visited {
+                color: $color-primary;
+            }
+        }
+
+        &__subtitle{
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        &__thumbnail {
+            height: 95px;
+            width: 95px;
+
+            img {
+                
+            }
+        }
+    }
+    &__footer{
+        a:link, a:visited {
+            color: $color-primary;
+            font-weight: bold;
+            font-size: 14px;
+        }
+    }
+
+    &__header, &__footer{
+        padding: 20px 24px;
+    }
+
+
+    // video
+    &--video {
+        .sidebar__post__thumbnail {
+            position: relative;
+
+            @include afterbefore(before){
+                @include center(both);
+                width: 55%;
+                height: 55%;
+                background-color: #fff;
+                @include border-radius(50%);
+            }
+
+            @include afterbefore(after) {
+                @include center(both);
+                width: 0; 
+                height: 0; 
+                border-top: 12px solid transparent;
+                border-bottom: 12px solid transparent;
+                border-left: 22px solid $color-primary;
+            }
+        }
+    }
+
+    // colunas
+    &--colunas {
+        .sidebar__post__thumbnail img{@include border-radius(50%);}
+    }
+
+    // colunas
+    &--maislidas {
+        .sidebar__post {
+            padding-left: 40px;
+            position: relative;
+            @include afterbefore(before){
+                @include center(vertical);
+                content: "1";
+                left: 0;
+                color: #a9a9a9;
+                font-size: 30px;
+            }
+
+            &:nth-of-type(2)::before{content: "2";}
+            &:nth-of-type(3)::before{content: "3";}
+            &:nth-of-type(4)::before{content: "4";}
+            &:nth-of-type(5)::before{content: "5";}
+        }
+    }
+
+    
+}

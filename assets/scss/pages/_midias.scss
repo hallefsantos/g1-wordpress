@@ -1,0 +1,29 @@
+/*###################
+###### Midias #######
+#####################*/
+
+.midias {
+
+    margin-top: 10rem;
+
+    .midia {
+        text-transform: initial;
+        color: #8b8b8b;
+        font-size: 1.6rem;
+        margin-bottom: 5rem;
+        &__foto {
+            margin-bottom: 2.5rem;
+        }
+        &__titulo {
+            font-size: 4.3rem !important;
+            text-transform: uppercase !important;
+            width: 20rem;
+        }
+        .midia__data {
+            color: #bda132;
+        }
+        .midia__resumo {
+            margin-bottom: 1.5rem;
+        }
+    }
+}

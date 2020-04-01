@@ -1,0 +1,21 @@
+/*###################
+### Social Icons ####
+#####################*/
+
+.social-icons {
+    li {
+        display: inline-block;
+        
+        a {
+            &:link,
+            &:visited {
+                color: $color-grey;
+            }
+            font-size: 30px;
+        }
+
+        &:not(:last-child) {
+            margin-right: 8px;
+        }
+    }
+}

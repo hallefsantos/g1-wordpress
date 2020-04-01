@@ -1,0 +1,37 @@
+.post {
+    padding: 30px 0;
+    &:not(:last-of-type){
+        border-bottom: 1px solid #c9c9c9;
+    }
+    &__thumbnail {
+        max-width: 380px;
+    }
+
+    &__content {
+        width: calc(100% - 380px);
+        padding-left: 15px;
+    }
+    &__subtitle {
+        font-weight: 600;
+        margin-bottom: 10px;
+        font-size: 16px;
+    }
+    &__title {
+        font-size: 21px;
+        margin-bottom: 20px;
+        a:link,
+        a:visited {
+            color: $color-primary;
+        }
+    }
+    &__resumo {
+        font-size: 14px;
+    }
+    &__datawrap {
+        margin-top: 15px;
+        font-size: 13px;
+        span {
+            color: #666;
+        }
+    }
+}
