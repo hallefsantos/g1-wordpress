@@ -30,7 +30,7 @@
 
                     <div class="row miolo">
                         <div class="col-lg-8 ultimasblog">
-                            dklskdlskdl
+
                             <!-- post here -->
                             <?php 
                                 if(have_posts()):
