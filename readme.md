@@ -3,4 +3,4 @@
 ################
 
 
-Estudo do portal G1 totalmente em Wordpress.
+Estudo do portal G1 em Wordpress.
