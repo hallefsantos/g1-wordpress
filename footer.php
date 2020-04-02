@@ -9,12 +9,65 @@
                         </a>
 
                         <div class="destaque d-flex justify-content-between flex-wrap">
-                            <a href="" class="destaque__principal">
-                                <strong class="destaque__principal__categoria">Auxilio emergencial</strong>
-                                <h2 class="destaque__principal__titulo">Ajuda de R$ 600 a trabalhador informal é aprovada no Senado e vai para sanção</h2>
-                                <p class="destaque__principal__resumo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi maiores sunt harum fugit iure laborum in sit! Accusantium, quas excepturi!</p>
-                            </a>
+
+                            <?php 
+                            
+                                $g_principal = new WP_Query(array(
+                                    'posts_per_page'    => 1,
+                                    'post_type'         => 'post',
+                                    'meta_key'		=> 'post_destaque',
+	                                'meta_value'	=> true
+                                    
+                                ));
+
+                                if($g_principal->have_posts()):
+                                    while($g_principal->have_posts()):
+                                        $g_principal->the_post(); ?>
+                                            <?php $g_principalid = get_the_ID(); ?>
+                                            <a href="" class="destaque__principal">
+                                                <strong class="destaque__principal__categoria">Auxilio emergencial</strong>
+                                                <h2 class="destaque__principal__titulo"><?php the_title(); ?></h2>
+                                                <p class="destaque__principal__resumo"><?php the_excerpt(); ?></p>
+                                            </a>
+                                    
+                                    <?php endwhile;
+                                    wp_reset_postdata();
+                                endif; ?>
+
+                            
+
+
+
+
+
                             <div class="destaque__secundario d-flex flex-lg-column justify-content-between flex-sm-row flex-wrap">
+                                <?php 
+                                
+                                $g_sedundarias = new WP_Query(array(
+                                    'posts_per_page'    => 2,
+                                    'post_type'     => 'post',
+                                    'order' => 'DESC',
+                                    'post__not_in' => array($g_principalid)
+                                    
+                                ));
+
+                                $excludehome = array($g_principalid);
+                                
+                                if($g_sedundarias->have_posts()):
+                                    while($g_sedundarias->have_posts()):
+                                        $g_sedundarias->the_post(); 
+                                        $g_principalid = get_the_ID(); 
+                                        $excludehome[] = $g_principalid; ?>
+                                        
+                                        <a href="#" class="destaque__secundario__noticia d-flex justify-content-end flex-column">
+                                            <h2 class="destaque__secundario__noticia__titulo"><?php the_title(); ?></h2>
+                                            <h3 class="destaque__secundario__noticia__subtitulo"><?php the_excerpt(); ?></h3>
+                                        </a>
+                                    
+                                    <?php endwhile;
+                                    wp_reset_postdata();
+                                endif; ?>
+<!-- 
                                 <a href="#" class="destaque__secundario__noticia d-flex justify-content-end flex-column">
                                     <h2 class="destaque__secundario__noticia__titulo">FOTOS: Rio tem dia de fila por comida e Centro desento</h2>
                                     <h3 class="destaque__secundario__noticia__subtitulo">Witzel promete 8 hospitais de campanha no RJ até abril</h3>
@@ -23,24 +76,33 @@
                                 <a href="#" class="destaque__secundario__noticia d-flex justify-content-end flex-column">
                                     <h2 class="destaque__secundario__noticia__titulo">Rotina, prioridades e celular isolado: os segredos para render no home office</h2>
                                     <h3 class="destaque__secundario__noticia__subtitulo">G1 traz guia de como trabalhar em casa</h3>
-                                </a>
+                                </a> -->
                             </div>
                         </a>
                     </div>
-
+                    
+                    <?php var_dump($excludehome); ?>
                     <div class="row miolo">
                         <div class="col-lg-8 ultimasblog">
 
                             <!-- post here -->
                             <?php 
-                                if(have_posts()):
-                                    while(have_posts()):
-                                        the_post();
+                                $g_noticias = new WP_Query(array(
+                                    'posts_per_page'    => 10,
+                                    'post_type'     => 'post',
+                                    'order' => 'DESC',
+                                    'post__not_in' => $excludehome
+                                    
+                                ));
 
-                                        get_template_part('template-parts/post');
-                                    endwhile;
+                                if($g_noticias->have_posts()):
+                                    while($g_noticias->have_posts()):
+                                        $g_noticias->the_post(); 
+                                        get_template_part('template-parts/post'); ?>
+
+                                    <?php endwhile;
+                                    wp_reset_postdata();
                                 endif; ?>
-                            
                         </div>
 
                         
